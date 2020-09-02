@@ -3,7 +3,7 @@ struct  _complex_num_t{
   double imaginary_part;
 };
 
-  typedef struct _complex_num_t complex_num_;
+  typedef struct _complex_num_t complex_num_t;
 
 enum _animal_t{
   CAT,
