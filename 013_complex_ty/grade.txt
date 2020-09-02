@@ -1,0 +1,12 @@
+Grading at 09/02/2020:06:45:10.991337
+For commit ID 38c2eb6a7dbf7daaaf29f289f056b06b5fd98799
+Grading at Wed Sep  2 14:45:10 CST 2020
+Checking syntax of declarations, and code that uses them
+mytypes.c has either illegal, or un-useable declarations
+the mostly likely causes are that you
+     have the wrong field names/types
+  or did not include the typedefs you were supposed to
+  or have the wrong values in the enum (missing, mis-spelled, or extras)
+  or have a syntax error in your declarations
+
+Overall Grade: FAILED
