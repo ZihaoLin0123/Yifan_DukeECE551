@@ -38,6 +38,7 @@ void  run_check(int * array, size_t n, size_t expectedAnswer){
     printf("Succeed\n");
   }else{
     //fail
+    printf("faile \n");
     exit(EXIT_FAILURE);
 
   }
