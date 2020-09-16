@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+
 int getNthBit(uint32_t number, int bit) {
   if (bit <0 || bit >= 32) {
     printf("Bit %d is invalid\n", bit);
@@ -11,7 +12,26 @@ int getNthBit(uint32_t number, int bit) {
 }
 
 void numToBits(uint32_t * nums, int nNums, int * bits, int nBits) {
-
+  if (nBits < nNums * 32) {
+    
+    printf("Invalid call to numTobits! nBits is %d, nNums is %d\n", nBits, nNums);
+  }
+ int curNum = 0;
+ for (int i = 0; i < nNums; i++)
+ {
+   curNum= nums[i];
+   
+     for (int j = 31; j >= 0; j--)
+     {
+       if(nBits > 0){
+       *bits = getNthBit(curNum, j);
+       bits++;
+       nBits--;
+       }
+     }
+   
+  
+  }
 }
 
 void doTest(uint32_t * nums, int n) {
@@ -33,5 +53,6 @@ int main(void) {
   doTest (array1, 7);
   doTest (array2, 2);
   numToBits(array1,7, bits , 7*32-1);
+  
   return EXIT_SUCCESS;
 }
