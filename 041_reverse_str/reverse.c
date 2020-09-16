@@ -4,7 +4,9 @@
 
 void reverse(char * str) {
   //WRITE ME!
-  
+  if(str == NULL){
+  return;
+  }
   char * pl = str;
   char * pr = str;
   
