@@ -4,10 +4,28 @@
 
 void reverse(char * str) {
   //WRITE ME!
+  
+  char * pl = str;
+  char * pr = str;
+  
+  while(*(pr + 1) != '\0'&& *pr != '\0'){
+    pr++;
+    
+  }
+  
+
+  while(pl != pr && pl != (pr + 1)){
+    char tempt = *pl;
+    *pl = *pr;
+    *pr = tempt;
+    pl++;
+    pr--;
+  }
+  
 }
 
 int main(void) {
-  char str0[] = "";
+   char str0[] = "";
   char str1[] = "123";
   char str2[] = "abcd";
   char str3[] = "Captain's log, Stardate 42523.7";
