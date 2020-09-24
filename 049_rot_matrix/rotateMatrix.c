@@ -34,6 +34,7 @@ int reverse(FILE *f){
   int row = 0;
    char arr[10][10];
   char c;
+  int count = 0;
  
    while ( (c = fgetc(f)) != EOF ){
      if(c < 0 && c > 255){
@@ -56,29 +57,27 @@ int reverse(FILE *f){
        
      arr[col][9-row] = c;
      col++;
+    
 
      }
      }
-
-     if(row >= 10 ){
-       if(c != '\n'){
+ count++;
+     
+       if(count > 110){
+       
 	 perror("over rows");
        exit(EXIT_FAILURE);
        }
-
-     }
-
-
-     
-    }
+       
+  }  
 
   
-   if(row < 9){
+   if(row <= 9){
  perror("less rows");
        exit(EXIT_FAILURE);
 
    }
-
+//printf("%d\n",count);
 
    for(int i = 0; i < 10; i++){
 
