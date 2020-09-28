@@ -1,38 +1,12 @@
-Grading at 09/28/2020:02:56:51.818179
-For commit ID 3738ae0cf82977208f2f51ca449f6340fdba234d
-Grading at Mon Sep 28 10:56:47 CST 2020
+Grading at 09/28/2020:03:05:51.726445
+For commit ID c18bbc7da4c26d4265360334becd7eb911ddc3bd
+Grading at Mon Sep 28 11:05:47 CST 2020
 Attempting to compile sortLines.c
 #################################################
 testcase1:
 testcase1 passed, your program successfully indicated a failure
-  - Valgrind reported errors
-valgrind was not clean
-==45889== Memcheck, a memory error detector
-==45889== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==45889== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==45889== 
-==45889== Parent PID: 45888
-==45889== 
-==45889== 
-==45889== HEAP SUMMARY:
-==45889==     in use at exit: 720 bytes in 6 blocks
-==45889==   total heap usage: 15 allocs, 9 frees, 10,136 bytes allocated
-==45889== 
-==45889== 720 bytes in 6 blocks are definitely lost in loss record 1 of 1
-==45889==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==45889==    by 0x4EBBBFB: getdelim (iogetdelim.c:62)
-==45889==    by 0x108ABD: printArr (in sortLines)
-==45889==    by 0x108C0D: main (in sortLines)
-==45889== 
-==45889== LEAK SUMMARY:
-==45889==    definitely lost: 720 bytes in 6 blocks
-==45889==    indirectly lost: 0 bytes in 0 blocks
-==45889==      possibly lost: 0 bytes in 0 blocks
-==45889==    still reachable: 0 bytes in 0 blocks
-==45889==         suppressed: 0 bytes in 0 blocks
-==45889== 
-==45889== For counts of detected and suppressed errors, rerun with: -v
-==45889== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase2:
 Your output is correct
@@ -41,64 +15,12 @@ valgrind was clean
 #################################################
 testcase3:
 Your output is correct
-  - Valgrind reported errors
-valgrind was not clean
-==45947== Memcheck, a memory error detector
-==45947== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==45947== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==45947== 
-==45947== Parent PID: 45946
-==45947== 
-==45947== 
-==45947== HEAP SUMMARY:
-==45947==     in use at exit: 720 bytes in 6 blocks
-==45947==   total heap usage: 14 allocs, 8 frees, 9,584 bytes allocated
-==45947== 
-==45947== 720 bytes in 6 blocks are definitely lost in loss record 1 of 1
-==45947==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==45947==    by 0x4EBBBFB: getdelim (iogetdelim.c:62)
-==45947==    by 0x108ABD: printArr (in sortLines)
-==45947==    by 0x108C0D: main (in sortLines)
-==45947== 
-==45947== LEAK SUMMARY:
-==45947==    definitely lost: 720 bytes in 6 blocks
-==45947==    indirectly lost: 0 bytes in 0 blocks
-==45947==      possibly lost: 0 bytes in 0 blocks
-==45947==    still reachable: 0 bytes in 0 blocks
-==45947==         suppressed: 0 bytes in 0 blocks
-==45947== 
-==45947== For counts of detected and suppressed errors, rerun with: -v
-==45947== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase4:
 Your output is correct
-  - Valgrind reported errors
-valgrind was not clean
-==45978== Memcheck, a memory error detector
-==45978== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==45978== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==45978== 
-==45978== Parent PID: 45977
-==45978== 
-==45978== 
-==45978== HEAP SUMMARY:
-==45978==     in use at exit: 1,560 bytes in 13 blocks
-==45978==   total heap usage: 29 allocs, 16 frees, 15,240 bytes allocated
-==45978== 
-==45978== 1,560 bytes in 13 blocks are definitely lost in loss record 1 of 1
-==45978==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==45978==    by 0x4EBBBFB: getdelim (iogetdelim.c:62)
-==45978==    by 0x108ABD: printArr (in sortLines)
-==45978==    by 0x108C0D: main (in sortLines)
-==45978== 
-==45978== LEAK SUMMARY:
-==45978==    definitely lost: 1,560 bytes in 13 blocks
-==45978==    indirectly lost: 0 bytes in 0 blocks
-==45978==      possibly lost: 0 bytes in 0 blocks
-==45978==    still reachable: 0 bytes in 0 blocks
-==45978==         suppressed: 0 bytes in 0 blocks
-==45978== 
-==45978== For counts of detected and suppressed errors, rerun with: -v
-==45978== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 
-Overall Grade: B
+Overall Grade: A
