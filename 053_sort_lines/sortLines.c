@@ -29,13 +29,14 @@ void printArr(FILE * f){
        line = NULL;
        
    }
-    
+    free(line);
      
      sortData(myArr, size);
 
   
   for (size_t i = 0; i < size; i++){
     printf("%s", myArr[i]);
+    free(myArr[i]);
     }
 
     free(myArr);
