@@ -49,35 +49,21 @@ void addCount(counts_t * c, const char * name) {
     
 }
 
-char* getContent(one_count_t * count){
-  char * n = count -> name;
-  int num = count -> number;
-  char * str = malloc(50 * sizeof(*str));
-  memset(str, '\0', 50);
-    sprintf(str, "%s", n);
-    sprintf(str + strlen(n), ": %d\n", num);
 
-   return str;
-   
-
-}
 void printCounts(counts_t * c, FILE * outFile) {
   //WRITE ME
   // int fputs( const char *s, FILE *fp )
   for(int i = 0; i < c -> knownNum; i++){
-    char * str = getContent(c->countsArr[i]);
-    if(fputs(str, outFile) == -1){
-      perror("error");
-      exit(EXIT_FAILURE);
-    }
-    free(str);
+  
+    fprintf(outFile, "%s:%d\n", c->countsArr[i]->name, c->countsArr[i]->number);   
+    
   }
 
-  char * strNull = malloc(50 * sizeof(*strNull));
-  memset(strNull, '\0', 50);
-  sprintf(strNull, "<unknown>: %d\n", c -> unknownNum);
-  fputs(strNull, outFile);
-  free(strNull);
+   if(c -> unknownNum > 0){
+  fprintf(outFile, "<unknown>: %d\n", c -> unknownNum);
+  }
+
+ 
 
   
   
