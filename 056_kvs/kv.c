@@ -72,10 +72,7 @@ kvarray_t * readKVs(const char * fname) {
   }
   kvArr->num = count;
   free(line);
-  if(count == 0){
-    fprintf(stderr,"count not find the file ");
-       exit(EXIT_FAILURE);
-    }
+  
    if (fclose(f) != 0) {
         perror("Failed to close the input file!");
         exit(EXIT_FAILURE);
