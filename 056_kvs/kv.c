@@ -16,15 +16,21 @@ kvpair_t* findPair(char * str){
   stripNewLine(str);
   char * place = strchr(str, '=');
   kvpair_t * pair = malloc(sizeof(*pair));
-  int rightLen = strlen(place + 1);
+  pair->key = NULL;
+  pair->value = NULL;
+  int rightLen = strlen(place+1);
   int leftLen = strlen(str) - rightLen - 1;
   printf("left:%d, right:%d", leftLen, rightLen);
   pair->key = malloc((leftLen + 1) * sizeof(*pair->key));
   pair->value = malloc((rightLen + 1) * sizeof(*pair->value));
-  //  memset(pair->key, '\0', leftLen+1);
-  //  memset(pair->value, '\0', rightLen+1);
-  // printf("size:%ld", sizeof(*pair->key));
+  // memset(pair->key, '\0', leftLen+1);
+   //memset(pair->value, '\0', rightLen+1);
+  
+  //strncpy will not add \0 automatically
+  //if there is a space no being initialized, valgrind will report
   strncpy(pair->key, str, leftLen);
+  pair->key[leftLen] = '\0';
+  printf("key %s", pair->key);
   strcpy(pair->value, place+1);
   
   return pair;
@@ -43,14 +49,18 @@ kvarray_t * readKVs(const char * fname) {
        exit(EXIT_FAILURE);
       }
   kvarray_t * kvArr = malloc(sizeof(*kvArr));
+  //memset(kvArr, 0, sizeof(*kvArr));
+  kvArr->arr = NULL;
   kvArr->num = 0;
   int count = 0;
 
   while(getline(&line, &sz, f ) >= 0){
     kvArr->arr = realloc(kvArr->arr, (count + 1) * sizeof(*kvArr->arr));
+    
     kvArr->arr[count] = findPair(line);
     count++;
-
+    free(line);
+    line = NULL;
   }
   kvArr->num = count;
   free(line);
@@ -86,7 +96,7 @@ void printKVs(kvarray_t * pairs) {
 char * lookupValue(kvarray_t * pairs, const char * key) {
   //WRITE ME
   for(int i = 0; i < pairs->num; i ++){
-    if( !strcmp(pairs->arr[i]->key, key)){
+    if( strcmp(pairs->arr[i]->key, key) == 0){
       return pairs->arr[i]->value;
     }
   }
