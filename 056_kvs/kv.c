@@ -15,11 +15,19 @@ void stripNewLine(char * str){
 kvpair_t* findPair(char * str){
   stripNewLine(str);
   char * place = strchr(str, '=');
+  if(place == NULL){
+    perror("error");
+    exit(EXIT_FAILURE);
+  }
   kvpair_t * pair = malloc(sizeof(*pair));
   pair->key = NULL;
   pair->value = NULL;
   int rightLen = strlen(place+1);
   int leftLen = strlen(str) - rightLen - 1;
+  if(strlen(str) == 0){
+    perror("error");
+    exit(EXIT_FAILURE);
+  }
   printf("left:%d, right:%d", leftLen, rightLen);
   pair->key = malloc((leftLen + 1) * sizeof(*pair->key));
   pair->value = malloc((rightLen + 1) * sizeof(*pair->value));
