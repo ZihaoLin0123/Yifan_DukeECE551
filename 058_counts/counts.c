@@ -75,7 +75,7 @@ void printCounts(counts_t * c, FILE * outFile) {
 
   char * strNull = malloc(50 * sizeof(*strNull));
   memset(strNull, '\0', 50);
-  sprintf(strNull, "<unknown> : %d\n", c -> unknownNum);
+  sprintf(strNull, "<unknown>: %d\n", c -> unknownNum);
   fputs(strNull, outFile);
   free(strNull);
 
