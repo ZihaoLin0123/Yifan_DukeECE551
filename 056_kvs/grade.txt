@@ -1,0 +1,15 @@
+Grading at 09/29/2020:02:46:49.508449
+For commit ID 823708c706f1f515905e374dd9c664d66651859d
+Grading at Tue Sep 29 10:46:47 CST 2020
+Attempting to compile:
+#################################################
+testcase1:
+valgrind reported memory errors
+#################################################
+testcase2:
+valgrind reported memory errors
+#################################################
+testcase3:
+valgrind reported memory errors
+
+Overall Grade: F
