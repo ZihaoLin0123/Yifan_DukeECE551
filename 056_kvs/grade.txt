@@ -1,6 +1,6 @@
-Grading at 09/29/2020:04:55:40.653580
-For commit ID 82bd8f29073386a3ccfb06ef6f6c3e47a1f3ebda
-Grading at Tue Sep 29 12:55:37 CST 2020
+Grading at 09/29/2020:05:11:54.132165
+For commit ID ec3a292d8350c536a2c8f9bdfb7a7719198fa486
+Grading at Tue Sep 29 13:11:50 CST 2020
 Attempting to compile:
 #################################################
 testcase1:
@@ -10,8 +10,6 @@ testcase2:
 Your output is incorrect
 #################################################
 testcase3:
-Your output is correct
-  - Valgrind was clean (no errors, no memory leaks)
-valgrind was clean
+Your output is incorrect
 
 Overall Grade: F
