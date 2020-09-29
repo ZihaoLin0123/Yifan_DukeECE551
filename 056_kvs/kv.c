@@ -28,7 +28,7 @@ kvpair_t* findPair(char * str){
     perror("error");
     exit(EXIT_FAILURE);
   }
-  printf("left:%d, right:%d", leftLen, rightLen);
+  
   pair->key = malloc((leftLen + 1) * sizeof(*pair->key));
   pair->value = malloc((rightLen + 1) * sizeof(*pair->value));
   // memset(pair->key, '\0', leftLen+1);
@@ -38,7 +38,7 @@ kvpair_t* findPair(char * str){
   //if there is a space no being initialized, valgrind will report
   strncpy(pair->key, str, leftLen);
   pair->key[leftLen] = '\0';
-  printf("key %s", pair->key);
+ 
   strcpy(pair->value, place+1);
   
   return pair;
