@@ -1,0 +1,81 @@
+#include "pandemic.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+country_t parseLine(char * line) {
+  //WRITE ME
+  country_t ans;
+  ans.name[0] = '\0';
+  int i = 0;
+  while(line[i] != ',' || line[i] == '\0'){
+    if(i == 63){
+      perror("Country name is too long!");
+      exit(EXIT_FAILURE);
+    }
+    ans.name[i] = line[i];
+    i++;
+  }
+  
+  ans.name[i] ='\0';
+
+  char * p = strchr(line, ',') + 1;
+  if(p == NULL || *p == '\0'){
+    perror("No population data");
+    exit(EXIT_FAILURE);
+  }
+  /*
+  int number = 0;
+  while(*p != '\0'){
+    if(*p >= 48 && *p <= 57){
+       number *= 10;
+       number += (*p - 48);
+	 }else{
+       perror("Invalid population");
+       exit(EXIT_FAILURE);
+
+    }
+   p++;
+  }
+  
+ ans.population = number;
+ */
+
+
+ int num = atoi(p);
+ if(num == 0){
+   perror("Invalid population");
+   exit(EXIT_FAILURE);
+ }else{
+  ans.population = num;
+ }
+
+  return ans;
+}
+
+void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
+  //WRITE ME
+  if(n_days < 7){
+    perror("Invalid number of days");
+    exit(EXIT_FAILURE);
+  }
+  
+  for(size_t i = 1; i <= n_days - 6; i++){
+    int totalNum = 0;
+    for(size_t j = 0; j <= 6; j++){
+      totalNum += data[i + j - 1];
+    }
+    avg[i - 1] = (double)(totalNum / 7.0);
+  }
+}
+
+void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
+  //WRITE ME
+}
+
+void printCountryWithMax(country_t * countries,
+                         size_t n_countries,
+                         unsigned ** data,
+                         size_t n_days) {
+  //WRITE ME
+}
