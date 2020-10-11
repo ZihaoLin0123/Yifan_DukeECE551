@@ -1,0 +1,35 @@
+Grading at 10/11/2020:15:58:48.121987
+For commit ID e7596ee0218d80feea612ca3f30fb411c27e0f90
+Grading at Sun Oct 11 23:58:47 CST 2020
+Doing some basic checking for your submission.
+
+Checking that your code compiles
+rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printRunningAvg.o -o printRunningAvg
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCumulative.o -o printCumulative
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
+The code compiled (good)
+
+Checking with the provided test cases
+
+Testing ./printCountries pop.csv 
+Your file matched the expected output
+Passed
+
+Testing ./printRunningAvg pop.csv daily.csv
+Your file matched the expected output
+Passed
+
+Testing ./printCumulative pop.csv daily.csv
+Your file matched the expected output
+Passed
+
+Testing ./printDailyMax pop.csv daily.csv
+Your file matched the expected output
+Passed
+
+You have passed the pregrader tests
+You should still run comprehensive tests of your own
+
+Overall Grade: NO GRADE YET
