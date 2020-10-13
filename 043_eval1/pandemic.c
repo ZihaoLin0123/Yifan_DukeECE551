@@ -5,6 +5,7 @@
 
 
 uint64_t findNumber(char * line);
+void stripNewLine(char * str);
 
 /*
 Translate given line into the country struct
@@ -16,7 +17,7 @@ country_t parseLine(char * line) {
     perror("No data");
     exit(EXIT_FAILURE);
   }
-
+  stripNewLine(line);
   size_t i = 0;
   //read the data before comma
   while(line[i] != ',' && line[i] != '\0'){
@@ -49,8 +50,9 @@ uint64_t findNumber(char * line){
   p++;
   char *tempt = p;
   //judge whether each character is a number
-  while (*tempt != '\0' && *tempt != '\n' && *tempt != 13){
+  while (*tempt != '\0' && *tempt != 13){
     if(*tempt < '0' || *tempt > '9'){
+      printf("%d",*tempt);
       perror("Invalid population");
       exit(EXIT_FAILURE);
     }
@@ -61,6 +63,16 @@ uint64_t findNumber(char * line){
     exit(EXIT_FAILURE);
   }
   return atoi(p);
+}
+
+/*
+Replace '\n' in the str into '\0';
+*/
+void stripNewLine(char * str){
+  char * p = strchr(str, '\n');
+  if(p != NULL){
+    *p = '\0';
+  }
 }
 
 /*
@@ -75,7 +87,7 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
     perror("Invalid number of days");
     exit(EXIT_FAILURE);
   }
-  //There are total n_days-6 possible 7-day avg
+  //There are total n_days - 6 possible 7-day avg
   for(size_t i = 1; i <= n_days - 6; i++){
     unsigned totalNum = 0;
     //Calculate the total cases of 7 days
