@@ -50,7 +50,7 @@ uint64_t findNumber(char * line){
   p++;
   char *tempt = p;
   //judge whether each character is a number
-  while (*tempt != '\0' && *tempt != 13){
+  while (*tempt != '\0'){
     if(*tempt < '0' || *tempt > '9'){
       printf("%d",*tempt);
       perror("Invalid population");
