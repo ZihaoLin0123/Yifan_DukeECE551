@@ -1,0 +1,9 @@
+Grading at 10/26/2020:14:49:11.210834
+For commit ID 14b5fa465c43826b7f4a65bcd65728255ea16d3f
+Grading at Mon Oct 26 22:49:10 CST 2020
+Attempting to compile:
+g++ -o circles -Wall -Werror -std=gnu++98 -pedantic -ggdb3 circle.hpp circle.cpp point.hpp point.cpp main.cpp
+Found binary 'circles'
+Your output matched what we expected
+
+Overall Grade: PASSED
