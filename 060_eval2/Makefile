@@ -11,5 +11,4 @@ story-step%: story-step%.o rand_story.o provided.o
 clean:
 	rm -f *~ $(PROGS) $(OBJS)
 
-rand_story.o: rand_story.h
-story-step1.o: story-step1.c
+
