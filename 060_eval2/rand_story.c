@@ -297,7 +297,6 @@ void stripNewLine(char * line){
 }
 
 void freeCatarray(catarray_t * catarray){
-    printf("freecataary");
     for (size_t i = 0; i < catarray->n; i++){
         for(size_t j = 0; j < catarray->arr[i].n_words; j++){
             free(catarray->arr[i].words[j]);
