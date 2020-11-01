@@ -4,6 +4,10 @@
 #include "provided.h"
 #include "rand_story.h"
 
+/*
+read a file and build a category array
+print it out
+*/
 int main(int argc, char ** argv){
     if(argc != 2){
         fprintf(stderr, "no file is found!");
@@ -14,8 +18,11 @@ int main(int argc, char ** argv){
         fprintf(stderr, "no file is found!");
         exit(EXIT_FAILURE);
     }
-    catarray_t * catarray = buildCategoryArray(f);
+    //construct the category array.
+    catarray_t *catarray = buildCategoryArray(f);
+    //print it
     printWords(catarray);
+    //free it
     freeCatarray(catarray);
     if (fclose(f) != 0) {
         fprintf(stderr, "Failed to close the input file!");

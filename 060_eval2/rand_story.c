@@ -4,134 +4,9 @@
 #include <string.h>
 #include <ctype.h>
 
-//step1
-void deleteUsedWord(const char * word, const char * categoryName, catarray_t * catarray){
-    char ** mywords = NULL;
-    for (size_t i = 0; i < catarray->n; i++){
-        if(strcmp(categoryName, catarray->arr[i].name) == 0){
-            if(catarray->arr[i].n_words == 1){
-                free(catarray->arr[i].words[0]);
-                free(catarray->arr[i].words);
-                catarray->arr[i].words = NULL;
-                catarray->arr[i].n_words = 0;
-                return;
-            }
-           
-            size_t number = 0;
-            for (size_t j = 0; j < catarray->arr[i].n_words; j++){
-                 
-                if(strcmp(word, catarray->arr[i].words[j]) != 0){
-                   
-                    mywords = realloc(mywords, (number + 1) * sizeof(*mywords));
-                    mywords[number] = malloc((strlen(catarray->arr[i].words[j]) + 1) * sizeof(*mywords[number]));
-                    mywords[number] = strcpy(mywords[number], catarray->arr[i].words[j]);
-                    
-                    number++;
-                }
-              
-               
-                
-            }
-            for (size_t j = 0; j < catarray->arr[i].n_words; j++){
-              free(catarray->arr[i].words[j]);
-            
-            }
-            
-            free(catarray->arr[i].words);
-            catarray->arr[i].words = mywords;
-            catarray->arr[i].n_words = number;
-
-            return;
-        }
-    }
-    
-}
-
-int isNumber(char * str){
-    while(*str != '\0'){
-        if(isdigit(*str) == 0){
-            return 0;
-        }
-        str++;
-    }
-    return 1;
-}
-
-void addUsedWords(category_t * usedWords, const char * word){
-    usedWords->words = realloc(usedWords->words, (usedWords->n_words + 1) * sizeof(*(usedWords->words)));
-    usedWords->words[usedWords->n_words] = malloc((strlen(word) + 1) * sizeof(*(usedWords->words[usedWords->n_words])));
-    usedWords->words[usedWords->n_words] = strcpy(usedWords->words[usedWords->n_words], word);
-    usedWords->n_words++;
-}
-
-char * chooseUsedWords(size_t index, category_t * usedWords){
-    if (index > usedWords->n_words || index < 1){
-        fprintf(stderr, "number in the blank is too large");
-        exit(EXIT_FAILURE);
-    }else{
-        char * word = usedWords->words[usedWords->n_words - index];
-        addUsedWords(usedWords, word);
-        return word;
-    }
-}
-
-void printStory(FILE * f){
-    char *line = NULL;
-    size_t sz = 0;
-    while(getline(&line, &sz, f) >= 0){
-       char * str = constructLine(line, NULL, NULL, 0);
-       printf("%s", str);
-       free(str);
-    }
-    free(line);
-}
-
-char * constructLine(char * line, catarray_t * catarray, category_t * usedWords, int option){
-    size_t count = 0;
-    size_t *count_p = &count;
-    char * start = line;
-    char * end = NULL;
-    checkStoryFormat(line);
-    char * str = malloc(sizeof(*str));
-    str[0] = '\0';
-    while(*line != '\0'){
-        if(*line == '_'){
-            end = line;
-            *end = '\0';
-            line = findNextWord(line);
-            //printf("next word %c", *line);
-            str = copyString(str, count_p, start);
-            //printf("%s", str);
-            char *categoryName = end + 1;
-            const char * chosenWord = NULL;
-            if(option == -1){
-                chosenWord = chooseWord(categoryName, NULL);
-                str = copyString(str, count_p, chosenWord);
-            }else if(isNumber(categoryName) == 0){ 
-                chosenWord = chooseWord(categoryName, catarray);
-                str = copyString(str, count_p, chosenWord);
-                addUsedWords(usedWords, chosenWord);
-                if(option == 1){
-                    deleteUsedWord(chosenWord, categoryName, catarray);
-                }
-                //str = insertCategory(str, categoryName, count_p, catarray, usedWords);
-            }else if(usedWords != NULL){
-                chosenWord = chooseUsedWords(atoi(categoryName), usedWords);
-                str = copyString(str, count_p, chosenWord);
-            }
-            
-            
-            start = line;
-            end = NULL;
-        }else{
-            line++;
-        }
-    }
-    if(*start != '\0'){
-        str = copyString(str, count_p, start);
-    }
-    return str;
-}
+/*
+find the start of the next word after '_'
+*/
 char * findNextWord(char * index){
     while(*index != '_'){
         index++;
@@ -140,22 +15,14 @@ char * findNextWord(char * index){
     return index + 1;
 }
 
-
-
+/*
+check the foramt of a line in the story
+*/
 void checkStoryFormat(char * line){
     size_t count = 0;
-    char * start = NULL;
     while(*line != '\0'){
         if (*line == '_' ){
             count++;
-            if(count % 2 == 1){
-                start = line;
-            }else if(count > 0){
-                if(start + 1 == line){
-                    fprintf(stderr, "empty category name in the blank!");
-                    exit(EXIT_FAILURE);
-                }
-            }
         }
         line++;
     }
@@ -165,35 +32,31 @@ void checkStoryFormat(char * line){
     }
 }
 
-
-
-
-
-
-
-//step2
-
-
-
-
-
-
+/*
+append a string from the source to the target
+count: current size of the target
+*/
 char* copyString(char * target, size_t * count, const char * source){
     if(target == NULL){
-        target = realloc(target, (strlen(source) + 5) * sizeof(*target));
+        //realloc the target and copy the string
+        target = realloc(target, (strlen(source) + 1) * sizeof(*target));
         target = strcpy(target, source);
     }else{
-    size_t length = strlen(source) + *count + 1;
-    *count = length;
-    target = realloc(target, (length + 1) * sizeof(*target));
-    target = strcat(target, source);
+        //increase the count
+        size_t length = strlen(source) + *count + 1;
+        *count = length;
+        //append the new content into the target
+        target = realloc(target, (length + 1) * sizeof(*target));
+        target = strcat(target, source);
     }
     return target;
 
 }
 
 
-
+/*
+build a catarray from the given file
+*/
 catarray_t * buildCategoryArray(FILE * f){
     catarray_t *catarray = malloc(sizeof(*catarray));
     catarray->arr = NULL;
@@ -201,27 +64,29 @@ catarray_t * buildCategoryArray(FILE * f){
     char *line = NULL;
     size_t sz = 0;
     while(getline(&line, &sz, f) >= 0){
+        //add a entry into the catarray
         addEntry(line, catarray);
-        //line = NULL;
     }
     free(line);
     return catarray;    
 }
 
+/*
+add one entry into the catarray
+*/
 void addEntry(char * line, catarray_t * catarray){
-
     stripNewLine(line);
-    checkFormat(line);
-    
-    //char * categoryName = line;
+    //check the format, there must a ':'
+    if(strchr(line, ':') == NULL){
+        fprintf(stderr, "invalid input");
+        exit(EXIT_FAILURE);
+    }
+    //locate the ':', replace it with '\0'
+    //then, seperatly extract the category name and word
     char *splitIndex = strchr(line, ':');
-    //char *word = splitIndex + 1;
     *splitIndex = '\0';
-    char * categoryName  = copyString(NULL, NULL,line); 
-    ///char * categoryName = malloc((strlen(line) + 1) * sizeof(*categoryName));
-    //categoryName = strcpy(categoryName, line);
-    char * word  = copyString(NULL, NULL,splitIndex + 1); 
-
+    char * categoryName  = copyString(NULL, NULL,line);//extract categoryName 
+    char * word  = copyString(NULL, NULL,splitIndex + 1);//extract word 
     if(catarray->arr == NULL){
         buildCategory(categoryName, word, catarray);
     }else{
@@ -229,28 +94,27 @@ void addEntry(char * line, catarray_t * catarray){
     }
 }
 
+/*
+add a new category into categoryName
+*/
 void buildCategory(char * categoryName, char * word, catarray_t * catarray){
     catarray->n++;
     catarray->arr = realloc(catarray->arr, catarray->n * sizeof(*catarray->arr));
     catarray->arr[catarray->n - 1].name = categoryName;
+    //put the word into the category
     catarray->arr[catarray->n - 1].words = malloc(sizeof(*(catarray->arr[catarray->n - 1].words)));
     catarray->arr[catarray->n - 1].words[0] = word;
     catarray->arr[catarray->n - 1].n_words = 1;
 }
 
-
+/*
+add a word into the catarray
+*/
 void addWord(char * categoryName, char * word, catarray_t * catarray){
     for (size_t i = 0; i < catarray->n; i++){
-        if(strcmp(catarray->arr[i].name, categoryName) == 0){
-            free(categoryName);
-             
-                for (size_t j = 0; j < catarray->arr[i].n_words; j++){
-                    if(strcmp(catarray->arr[i].words[j], word) == 0){
-                        free(word);
-                        return;
-                    }
-                }
-            
+        if(strcmp(catarray->arr[i].name, categoryName) == 0){ //judge whether the category name is existed.
+            free(categoryName);//if yes, don't need to add it again. 
+            //add the word into the existed category
             catarray->arr[i].n_words += 1;
             catarray->arr[i].words = realloc(catarray->arr[i].words, 
                                             catarray->arr[i].n_words * sizeof(*(catarray->arr[i].words)));
@@ -258,37 +122,13 @@ void addWord(char * categoryName, char * word, catarray_t * catarray){
             return;
         }
     }
+    //if the word belongs to a new category, we create a new category.
     buildCategory(categoryName, word, catarray);
-    
 }
 
-
-
-
-void checkFormat(char * line){
-    if(strlen(line) < 3){
-        fprintf(stderr, "invalid category file!");
-        exit(EXIT_FAILURE);
-    }
-    char* index = line;
-    size_t count = 0;
-    while(*index != '\0'){
-        if(*index == ':'){
-            count++;
-            if(count > 1){
-                fprintf(stderr, "invalid category file!");
-                exit(EXIT_FAILURE);
-            }else if(index == line){
-                fprintf(stderr, "invalid category file!");
-                exit(EXIT_FAILURE);
-            }
-        }
-        index++;
-    }
-    
-}
-
-
+/*
+replace '\n' with '\0'
+*/
 void stripNewLine(char * line){
     char * index = strchr(line, '\n');
     if(index != NULL){
@@ -296,6 +136,9 @@ void stripNewLine(char * line){
     } 
 }
 
+/*
+free catarray
+*/
 void freeCatarray(catarray_t * catarray){
     for (size_t i = 0; i < catarray->n; i++){
         for(size_t j = 0; j < catarray->arr[i].n_words; j++){
@@ -308,6 +151,9 @@ void freeCatarray(catarray_t * catarray){
     free(catarray);
 }
 
+/*
+free category
+*/
 void freeCategory(category_t * usedWords){
     for(size_t j = 0; j < usedWords->n_words; j++){
             free(usedWords->words[j]);
@@ -315,4 +161,82 @@ void freeCategory(category_t * usedWords){
         free(usedWords->words);
         free(usedWords);
 
+}
+
+/*
+delete a used word
+*/
+void deleteUsedWord(const char * word, const char * categoryName, catarray_t * catarray){
+    char ** mywords = NULL; // new category
+    for (size_t i = 0; i < catarray->n; i++){
+        //when find the category the word belongs to
+        if(strcmp(categoryName, catarray->arr[i].name) == 0){
+            //if only one word left in the category, then free it and set the category to NULL
+            if(catarray->arr[i].n_words == 1){
+                free(catarray->arr[i].words[0]);
+                free(catarray->arr[i].words);
+                catarray->arr[i].words = NULL;
+                catarray->arr[i].n_words = 0;
+                return;
+            }
+            //copy the unsed word into the new category "mywords"
+            size_t number = 0;
+            for (size_t j = 0; j < catarray->arr[i].n_words; j++){
+                if(strcmp(word, catarray->arr[i].words[j]) != 0){
+                    mywords = realloc(mywords, (number + 1) * sizeof(*mywords));
+                    mywords[number] = malloc((strlen(catarray->arr[i].words[j]) + 1) * sizeof(*mywords[number]));
+                    mywords[number] = strcpy(mywords[number], catarray->arr[i].words[j]);
+                    number++;
+                }
+            }
+            //free the old category
+            for (size_t j = 0; j < catarray->arr[i].n_words; j++){
+              free(catarray->arr[i].words[j]);
+            }
+            free(catarray->arr[i].words);
+            //update the category
+            catarray->arr[i].words = mywords;
+            catarray->arr[i].n_words = number;
+            return;
+        }
+    }
+}
+
+
+/*
+judge whether the given str is a number
+*/
+int isNumber(char * str){
+    while(*str != '\0'){
+        if(isdigit(*str) == 0){
+            return 0;
+        }
+        str++;
+    }
+    return 1;
+}
+
+/*
+add a used word into used word array
+*/
+void addUsedWords(category_t * usedWords, const char * word){
+    usedWords->words = realloc(usedWords->words, (usedWords->n_words + 1) * sizeof(*(usedWords->words)));
+    usedWords->words[usedWords->n_words] = malloc((strlen(word) + 1) * sizeof(*(usedWords->words[usedWords->n_words])));
+    usedWords->words[usedWords->n_words] = strcpy(usedWords->words[usedWords->n_words], word);
+    usedWords->n_words++;
+}
+
+/*
+choose a used word based on the given index
+*/
+char * chooseUsedWords(size_t index, category_t * usedWords){
+    //check whether the index is valid
+    if (index > usedWords->n_words || index < 1){
+        fprintf(stderr, "number in the blank is too large");
+        exit(EXIT_FAILURE);
+    }else{
+        char * word = usedWords->words[usedWords->n_words - index];
+        addUsedWords(usedWords, word);
+        return word;
+    }
 }
