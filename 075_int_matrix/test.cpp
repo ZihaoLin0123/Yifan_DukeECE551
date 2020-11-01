@@ -8,6 +8,7 @@ int main(void) {
     }
   }
   std::cout << "a is:\n" << a << std::endl;
+  
   IntMatrix b(a);
   std::cout << "b is:\n" << a << std::endl;
   if (a == b) {
@@ -33,5 +34,6 @@ int main(void) {
   std::cout << "c is:\n" << c << std::endl;
   c = a + b;
   std::cout << "Now, c is:\n" << c << std::endl;
+  
   return EXIT_SUCCESS;
 }
