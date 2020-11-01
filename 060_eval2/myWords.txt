@@ -1,0 +1,6 @@
+word1:a
+word1:b
+word2:c
+word2:d
+word3:e
+word3:f

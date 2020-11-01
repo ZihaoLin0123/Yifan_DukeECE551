@@ -207,6 +207,9 @@ void deleteUsedWord(const char * word, const char * categoryName, catarray_t * c
 judge whether the given str is a number
 */
 int isNumber(char * str){
+    if(*str == '\0'){
+        return 0;
+    }
     while(*str != '\0'){
         if(isdigit(*str) == 0){
             return 0;
