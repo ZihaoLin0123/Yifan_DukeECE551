@@ -19,10 +19,11 @@ int main(int argc, char ** argv){
             vec.push_back(str);
         }
     }else{
-        for (size_t i = 1; i < argc; i++){
+        for (int i = 1; i < argc; i++){
             file.open(argv[i]);
             if(file.fail()){
                 std::cerr << "fail to open file" << std::endl;
+                exit(EXIT_FAILURE);
             }
             while(!file.eof()){
                 std::getline(file, str);
