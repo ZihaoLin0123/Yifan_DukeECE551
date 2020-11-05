@@ -33,9 +33,11 @@ int main(int argc, char ** argv){
                 vec.push_back(str);
             }
             file.close();
+             std::sort(vec.begin(), vec.end());
+            printVec(vec);
+            vec.clear();
         }
-         std::sort(vec.begin(), vec.end());
-          printVec(vec);
+        
     }
    
     return 0;
