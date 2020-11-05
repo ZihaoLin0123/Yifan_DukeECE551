@@ -17,6 +17,9 @@ int main(int argc, char ** argv){
         while(!std::cin.eof()){
             std::getline(std::cin, str);
             vec.push_back(str);
+            std::sort(vec.begin(), vec.end());
+            printVec(vec);
+            vec.clear();
         }
     }else{
         for (int i = 1; i < argc; i++){
@@ -31,8 +34,9 @@ int main(int argc, char ** argv){
             }
             file.close();
         }
+         std::sort(vec.begin(), vec.end());
+          printVec(vec);
     }
-    std::sort(vec.begin(), vec.end());
-    printVec(vec);
+   
     return 0;
 }
