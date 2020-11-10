@@ -85,7 +85,7 @@ public:
     DivExpression(Expression * lhs, Expression * rhs): l(lhs), r(rhs){}
     virtual std::string toString() const{
         std::stringstream ss;
-        ss << "(" << l->toString() << "-" << r->toString() << ")";
+        ss << "(" << l->toString() << "/" << r->toString() << ")";
         return ss.str();
     }
     virtual  ~DivExpression(){
