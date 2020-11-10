@@ -37,7 +37,7 @@ public:
         return ss.str();
     }
     virtual  ~PlusExpression(){
-        delete l;
-        delete r;
+        //delete l;
+        //delete r;
     }
 };
