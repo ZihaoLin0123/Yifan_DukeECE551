@@ -1,17 +1,10 @@
-Grading at 11/14/2020:11:54:07.546542
-For commit ID c4498982290eb35be6eddf9d1d0ac0ffd7f1e5bd
-Grading at Sat Nov 14 19:54:07 CST 2020
+Grading at 11/14/2020:13:15:58.508124
+For commit ID acc354bf93ac781c1ae422eaaad89d90bf1cdf4a
+Grading at Sat Nov 14 21:15:58 CST 2020
 -----------------------------------------------
 testcase 1 : Testing with LinkedList<int>
 ...compiling...
-tester.cpp: In instantiation of ‘void printList(const LinkedList<T>&) [with T = int]’:
-tester.cpp:69:16:   required from here
-tester.cpp:45:23: error: passing ‘const LinkedList<int>’ as ‘this’ argument discards qualifiers [-fpermissive]
-   for (int i =0 ; i < (int)lst.getSize(); i++) {
 In file included from tester.cpp:1:0:
-ll.h:164:9: note:   in call to ‘int LinkedList<T>::getSize() [with T = int]’
-     int getSize(){
-         ^~~~~~~
 ll.h: In member function ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = int]’:
 ll.h:162:5: error: control reaches end of non-void function [-Werror=return-type]
      }
@@ -21,14 +14,7 @@ The code did not compile.  This test failed.
 -----------------------------------------------
 testcase 2 : Testing with LinkedList<std::string>
 ...compiling...
-tester.cpp: In instantiation of ‘void printList(const LinkedList<T>&) [with T = std::__cxx11::basic_string<char>]’:
-tester.cpp:69:16:   required from here
-tester.cpp:45:23: error: passing ‘const LinkedList<std::__cxx11::basic_string<char> >’ as ‘this’ argument discards qualifiers [-fpermissive]
-   for (int i =0 ; i < (int)lst.getSize(); i++) {
 In file included from tester.cpp:1:0:
-ll.h:164:9: note:   in call to ‘int LinkedList<T>::getSize() [with T = std::__cxx11::basic_string<char>]’
-     int getSize(){
-         ^~~~~~~
 ll.h: In member function ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = std::__cxx11::basic_string<char>]’:
 ll.h:162:5: error: control reaches end of non-void function [-Werror=return-type]
      }
@@ -38,14 +24,7 @@ The code did not compile.  This test failed.
 -----------------------------------------------
 testcase 3 : Testing with LinkedList<(a custom class we wrote)>
 ...compiling...
-tester.cpp: In instantiation of ‘void printList(const LinkedList<T>&) [with T = Tester]’:
-tester.cpp:69:16:   required from here
-tester.cpp:45:23: error: passing ‘const LinkedList<Tester>’ as ‘this’ argument discards qualifiers [-fpermissive]
-   for (int i =0 ; i < (int)lst.getSize(); i++) {
 In file included from tester.cpp:1:0:
-ll.h:164:9: note:   in call to ‘int LinkedList<T>::getSize() [with T = Tester]’
-     int getSize(){
-         ^~~~~~~
 ll.h: In member function ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = Tester]’:
 ll.h:162:5: error: control reaches end of non-void function [-Werror=return-type]
      }
