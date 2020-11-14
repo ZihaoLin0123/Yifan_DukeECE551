@@ -156,9 +156,9 @@ public:
             head = dummyHead;
             tail = temp;
             sz = rhs.sz;
-            }else{
-                return *this;
             }
+            return *this;
+            
     }
 
     int getSize() const{
