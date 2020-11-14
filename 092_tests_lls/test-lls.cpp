@@ -9,9 +9,9 @@ int main(void) {
 }
 void testList(void) {
   IntList list1;
-  assert(list1.head != NULL);
+  assert(list1.head == NULL);
 
-  assert(list1.tail != NULL);
+  assert(list1.tail == NULL);
 
   assert(list1.getSize() == 0);
   
