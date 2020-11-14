@@ -1,0 +1,19 @@
+Grading at 11/14/2020:06:58:52.532648
+For commit ID 4f60b56cc3630e88229952d6f0497640112e09b5
+Grading at Sat Nov 14 14:58:49 CST 2020
+**Testing correct implementation **
+-----------------------------------
+  - Valgrind was clean (no errors, no memory leaks)
+
+**Testing broken implementation 10**
+-----------------------------------
+
+**Testing broken implementation 11**
+-----------------------------------
+
+**Testing broken implementation 12**
+-----------------------------------
+  - Valgrind was clean (no errors, no memory leaks)
+Your test program did not identify /usr/local/ece551/lls/il12.o as broken!
+
+Overall Grade: FAILED
