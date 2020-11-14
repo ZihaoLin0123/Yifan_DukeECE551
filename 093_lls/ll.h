@@ -128,7 +128,7 @@ public:
         return -1;
     }
 
-    LinkedList(const LinkedList & rhs):head(NULL), tail(NULL), sz(rhs.sz){
+    LinkedList(const LinkedList & rhs):head(NULL), tail(NULL), sz(0){
         Node *cur = rhs.head;
         while(cur != NULL){
             addBack(cur->data);
@@ -161,7 +161,7 @@ public:
             }
     }
 
-    int getSize(){
+    int getSize() const{
         return sz;
     }
 };
