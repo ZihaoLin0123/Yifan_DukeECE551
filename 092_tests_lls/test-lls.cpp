@@ -3,27 +3,32 @@
 #include <iostream>
 #include "il.h"
 
+int main(void) {
+  testList();
+  return EXIT_SUCCESS;
+}
 void testList(void) {
   IntList list1;
-  assert(list1.head == NULL);
+  assert(list1.head != NULL);
 
-  assert(list1.tail == NULL);
-  if (list1.getSize() != 0)
-    exit(EXIT_FAILURE);
+  assert(list1.tail != NULL);
+
+  assert(list1.getSize() == 0);
+  
   list1.addFront(3);
-  if (list1.head != list1.tail)
-    exit(EXIT_FAILURE);
-  if (list1.getSize() != 1)
-    exit(EXIT_FAILURE);
-  if (list1.head->data != 3)
-    exit(EXIT_FAILURE);
+  assert(list1.head == list1.tail);
+
+  assert(list1.getSize() == 1);
+
+  assert(list1.head->data == 3);
+  
   list1.addFront(4);
-  if (list1.head->next != list1.tail)
-    exit(EXIT_FAILURE);
-  if (list1.head->data != 4)
-    exit(EXIT_FAILURE);
-  if (list1.getSize() != 2)
-    exit(EXIT_FAILURE);
+  assert(list1.head->next == list1.tail);
+
+  assert(list1.head->data == 4);
+
+  assert(list1.getSize() == 2);
+
   IntList list2;
   list2.addBack(3);
   if (list2.head != list2.tail)
@@ -115,8 +120,3 @@ void testList(void) {
   if (list2.head->next != list2.tail->prev)
     exit(EXIT_FAILURE);
     }
-    
-    int main(void) {
-  testList();
-  return EXIT_SUCCESS;
-}
