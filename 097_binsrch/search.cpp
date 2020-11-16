@@ -9,8 +9,8 @@ int binarySearchForZero(Function<int, int> * f, int low, int high){
         if (target == 0){
             return mid;
         }else if(target > 0){
-            return binarySearchForZero(f, low, mid - 1);
+            return binarySearchForZero(f, low, mid);
         }else{
-            return binarySearchForZero(f, mid + 1, high);
+            return binarySearchForZero(f, mid, high);
         }
     }
