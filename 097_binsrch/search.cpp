@@ -1,17 +1,11 @@
 #include "function.h"
 
 int binarySearchForZero(Function<int, int> * f, int low, int high){
-        int mid = low + (high - low) / 2;
-        int target = f->invoke(mid);
-        if(low == high){
-            if (target == 0){
-                return mid;
-            }else if(target > 0){
-                return low;
-            }else{
-                return high - 1;
-            }
+        if((low + 1) >= high){
+            return low;
         }
+        int mid = (low + high) / 2;
+        int target = f->invoke(mid);
         if (target == 0){
             return mid;
         }else if(target > 0){
