@@ -49,8 +49,11 @@ public:
         throw std::invalid_argument("error");
     }
     virtual void remove(const K& key){
+        if(head == NULL){
+        return;
+        }
         if(key == head->data.first){
-            remove(head);
+            head = remove(head);
             return;
         }
         Node *cur = head;
