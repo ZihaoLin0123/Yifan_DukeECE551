@@ -17,6 +17,16 @@ private:
 
 public:
     BstMap():head(NULL){}
+     BstMap(const BstMap & rhs) : head(NULL) { head = copy(rhs.head); }
+    Node * copy(Node * node){
+        if(node == NULL){
+            return NULL;
+        }
+        Node *root = new Node(node->data);
+        root ->left = copy(node->left);
+        root->right = copy(node->right);
+        return root;
+    }
 
     virtual void add(const K & key, const V & value){
         pair<K, V> temp(key, value);
