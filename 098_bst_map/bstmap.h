@@ -27,7 +27,13 @@ public:
         root->right = copy(node->right);
         return root;
     }
-    
+    void destory(Node * node){
+        if(node != NULL){
+            destory(node->left);
+            destory(node->right);
+            delete node;
+        }
+    }
     BstMap & operator=(const BstMap & rhs) {
     if (this != &rhs) {
       destroy(head);
@@ -155,13 +161,7 @@ public:
 
    
 
-    void destory(Node * node){
-        if(node != NULL){
-            destory(node->left);
-            destory(node->right);
-            delete node;
-        }
-    }
+    
     virtual ~BstMap<K,V>() {
         destory(head);
     }
