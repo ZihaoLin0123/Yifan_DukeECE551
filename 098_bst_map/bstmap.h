@@ -27,6 +27,14 @@ public:
         root->right = copy(node->right);
         return root;
     }
+    
+    BstMap & operator=(const BstMap & rhs) {
+    if (this != &rhs) {
+      destroy(head);
+      head = copy(rhs.head);
+    }
+    return *this;
+  }
 
     virtual void add(const K & key, const V & value){
         pair<K, V> temp(key, value);
