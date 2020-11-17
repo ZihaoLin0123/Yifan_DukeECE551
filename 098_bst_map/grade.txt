@@ -1,16 +1,16 @@
-Grading at 11/17/2020:16:05:58.558320
-For commit ID 730fe631bfcf9235bcdb63cf8df6f64b9c8855d5
-Grading at Wed Nov 18 00:05:57 CST 2020
+Grading at 11/17/2020:16:08:19.745757
+For commit ID 1b14e576f9889cddb33e7dda9433e565839c3a75
+Grading at Wed Nov 18 00:08:18 CST 2020
 -----------------------------------------------
 testcase 1 : Testing with BstMap<int,int>
 ...compiling...
 In file included from 89-tester.cpp:1:0:
 bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = int; V = int]’:
 89-tester.cpp:131:10:   required from here
-bstmap.h:33:14: error: ‘destroy’ was not declared in this scope
+bstmap.h:39:14: error: ‘destroy’ was not declared in this scope
        destroy(head);
        ~~~~~~~^~~~~~
-bstmap.h:33:14: note: suggested alternative: ‘destory’
+bstmap.h:39:14: note: suggested alternative: ‘destory’
        destroy(head);
        ~~~~~~~^~~~~~
        destory
@@ -21,10 +21,10 @@ testcase 2 : Testing with BstMap<int,std::string>
 In file included from 89-tester.cpp:1:0:
 bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = int; V = std::__cxx11::basic_string<char>]’:
 89-tester.cpp:131:10:   required from here
-bstmap.h:33:14: error: ‘destroy’ was not declared in this scope
+bstmap.h:39:14: error: ‘destroy’ was not declared in this scope
        destroy(head);
        ~~~~~~~^~~~~~
-bstmap.h:33:14: note: suggested alternative: ‘destory’
+bstmap.h:39:14: note: suggested alternative: ‘destory’
        destroy(head);
        ~~~~~~~^~~~~~
        destory
@@ -35,10 +35,10 @@ testcase 3 : Testing with BstMap<int,(a custom class we wrote)>
 In file included from 89-tester.cpp:1:0:
 bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = int; V = Tester]’:
 89-tester.cpp:131:10:   required from here
-bstmap.h:33:14: error: ‘destroy’ was not declared in this scope
+bstmap.h:39:14: error: ‘destroy’ was not declared in this scope
        destroy(head);
        ~~~~~~~^~~~~~
-bstmap.h:33:14: note: suggested alternative: ‘destory’
+bstmap.h:39:14: note: suggested alternative: ‘destory’
        destroy(head);
        ~~~~~~~^~~~~~
        destory
@@ -49,10 +49,10 @@ testcase 4 : Testing with BstMap<std::string,int>
 In file included from 89-tester.cpp:1:0:
 bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = std::__cxx11::basic_string<char>; V = int]’:
 89-tester.cpp:131:10:   required from here
-bstmap.h:33:14: error: ‘destroy’ was not declared in this scope
+bstmap.h:39:14: error: ‘destroy’ was not declared in this scope
        destroy(head);
        ~~~~~~~^~~~~~
-bstmap.h:33:14: note: suggested alternative: ‘destory’
+bstmap.h:39:14: note: suggested alternative: ‘destory’
        destroy(head);
        ~~~~~~~^~~~~~
        destory
@@ -63,10 +63,10 @@ testcase 5 : Testing with BstMap<std::string,std::string>
 In file included from 89-tester.cpp:1:0:
 bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’:
 89-tester.cpp:131:10:   required from here
-bstmap.h:33:14: error: ‘destroy’ was not declared in this scope
+bstmap.h:39:14: error: ‘destroy’ was not declared in this scope
        destroy(head);
        ~~~~~~~^~~~~~
-bstmap.h:33:14: note: suggested alternative: ‘destory’
+bstmap.h:39:14: note: suggested alternative: ‘destory’
        destroy(head);
        ~~~~~~~^~~~~~
        destory
@@ -77,10 +77,10 @@ testcase 6 : Testing with BstMap<std::string,(a custom class we wrote)>
 In file included from 89-tester.cpp:1:0:
 bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = std::__cxx11::basic_string<char>; V = Tester]’:
 89-tester.cpp:131:10:   required from here
-bstmap.h:33:14: error: ‘destroy’ was not declared in this scope
+bstmap.h:39:14: error: ‘destroy’ was not declared in this scope
        destroy(head);
        ~~~~~~~^~~~~~
-bstmap.h:33:14: note: suggested alternative: ‘destory’
+bstmap.h:39:14: note: suggested alternative: ‘destory’
        destroy(head);
        ~~~~~~~^~~~~~
        destory
@@ -91,10 +91,10 @@ testcase 7 : Testing with BstMap<(a custom class we wrote),int>
 In file included from 89-tester.cpp:1:0:
 bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = Tester; V = int]’:
 89-tester.cpp:131:10:   required from here
-bstmap.h:33:14: error: ‘destroy’ was not declared in this scope
+bstmap.h:39:14: error: ‘destroy’ was not declared in this scope
        destroy(head);
        ~~~~~~~^~~~~~
-bstmap.h:33:14: note: suggested alternative: ‘destory’
+bstmap.h:39:14: note: suggested alternative: ‘destory’
        destroy(head);
        ~~~~~~~^~~~~~
        destory
@@ -105,10 +105,10 @@ testcase 8 : Testing with BstMap<(a custom class we wrote),std::string>
 In file included from 89-tester.cpp:1:0:
 bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = Tester; V = std::__cxx11::basic_string<char>]’:
 89-tester.cpp:131:10:   required from here
-bstmap.h:33:14: error: ‘destroy’ was not declared in this scope
+bstmap.h:39:14: error: ‘destroy’ was not declared in this scope
        destroy(head);
        ~~~~~~~^~~~~~
-bstmap.h:33:14: note: suggested alternative: ‘destory’
+bstmap.h:39:14: note: suggested alternative: ‘destory’
        destroy(head);
        ~~~~~~~^~~~~~
        destory
@@ -119,10 +119,10 @@ testcase 9 : Testing with BstMap<(a custom class we wrote),(a custom class we wr
 In file included from 89-tester.cpp:1:0:
 bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = Tester; V = Tester]’:
 89-tester.cpp:131:10:   required from here
-bstmap.h:33:14: error: ‘destroy’ was not declared in this scope
+bstmap.h:39:14: error: ‘destroy’ was not declared in this scope
        destroy(head);
        ~~~~~~~^~~~~~
-bstmap.h:33:14: note: suggested alternative: ‘destory’
+bstmap.h:39:14: note: suggested alternative: ‘destory’
        destroy(head);
        ~~~~~~~^~~~~~
        destory
