@@ -35,7 +35,7 @@ public:
     }
     return *this;
   }
-
+/*
     virtual void add(const K & key, const V & value){
         pair<K, V> temp(key, value);
         head = add(head, temp);
@@ -53,6 +53,29 @@ public:
         }
         return cur;
     }
+    
+    */
+    
+    
+    virtual void add(const K & key, const V & value) {
+    Node ** current = &head;
+    pair<K, V> temp(key, value);
+    while (*current != NULL) {
+      //key exists: replace its value
+      if (key == (*current)->data.first) {
+        (*current)->data.second = value;
+        return;
+      }
+      //no such key
+      else if (key < (*current)->data.first) {
+        current = &((*current)->left);
+      }
+      else {
+        current = &((*current)->right);
+      }
+    }
+    *current = new Node(temp);
+  }
     virtual const V & lookup(const K& key) const throw (std::invalid_argument){
         Node *cur = head;
         while(cur != NULL){
