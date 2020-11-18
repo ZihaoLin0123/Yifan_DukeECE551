@@ -1,239 +1,68 @@
-Grading at 11/18/2020:04:24:09.330378
-For commit ID 945a0b85e7fe11e5eda17b35932cc09f258d5942
-Grading at Wed Nov 18 12:23:47 CST 2020
+Grading at 11/18/2020:04:46:38.389277
+For commit ID 3813e2818d5a9723e44e5c64caa6f31dfd380b6d
+Grading at Wed Nov 18 12:46:29 CST 2020
 -----------------------------------------------
 testcase 1 : Testing with BstMap<int,int>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_69_did_not_match
-Line_72_did_not_match
-Line_73_did_not_match
-Line_76_did_not_match
-Line_77_did_not_match
-Line_84_did_not_match
-Line_85_did_not_match
-Line_88_did_not_match
-Line_89_did_not_match
-Line_92_did_not_match
-Line_97_did_not_match
-Line_100_did_not_match
-Line_101_did_not_match
-Line_104_did_not_match
-Line_105_did_not_match
-Line_112_did_not_match
-Line_113_did_not_match
-Line_116_did_not_match
-Line_120_did_not_match
-Line_125_did_not_match
-Line_128_did_not_match
-Line_129_did_not_match
-Line_132_did_not_match
-Line_133_did_not_match
-Line_152_did_not_match
-Line_153_did_not_match
-Your file did not match the expected ouput
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 2 : Testing with BstMap<int,std::string>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_69_did_not_match
-Line_72_did_not_match
-Line_73_did_not_match
-Line_76_did_not_match
-Line_77_did_not_match
-Line_84_did_not_match
-Line_85_did_not_match
-Line_88_did_not_match
-Line_89_did_not_match
-Line_92_did_not_match
-Line_97_did_not_match
-Line_100_did_not_match
-Line_101_did_not_match
-Line_104_did_not_match
-Line_105_did_not_match
-Line_112_did_not_match
-Line_113_did_not_match
-Line_116_did_not_match
-Line_120_did_not_match
-Line_125_did_not_match
-Line_128_did_not_match
-Line_129_did_not_match
-Line_132_did_not_match
-Line_133_did_not_match
-Line_152_did_not_match
-Line_153_did_not_match
-Your file did not match the expected ouput
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 3 : Testing with BstMap<int,(a custom class we wrote)>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_69_did_not_match
-Line_72_did_not_match
-Line_73_did_not_match
-Line_76_did_not_match
-Line_77_did_not_match
-Line_84_did_not_match
-Line_85_did_not_match
-Line_88_did_not_match
-Line_89_did_not_match
-Line_92_did_not_match
-Line_97_did_not_match
-Line_100_did_not_match
-Line_101_did_not_match
-Line_104_did_not_match
-Line_105_did_not_match
-Line_112_did_not_match
-Line_113_did_not_match
-Line_116_did_not_match
-Line_120_did_not_match
-Line_125_did_not_match
-Line_128_did_not_match
-Line_129_did_not_match
-Line_132_did_not_match
-Line_133_did_not_match
-Line_152_did_not_match
-Line_153_did_not_match
-Your file did not match the expected ouput
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 4 : Testing with BstMap<std::string,int>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==5474== Memcheck, a memory error detector
-==5474== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==5474== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==5474== Command: ./test.4
-==5474== Parent PID: 5473
-==5474== 
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 5 : Testing with BstMap<std::string,std::string>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==5575== Memcheck, a memory error detector
-==5575== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==5575== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==5575== Command: ./test.5
-==5575== Parent PID: 5574
-==5575== 
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 6 : Testing with BstMap<std::string,(a custom class we wrote)>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==5680== Memcheck, a memory error detector
-==5680== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==5680== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==5680== Command: ./test.6
-==5680== Parent PID: 5679
-==5680== 
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 7 : Testing with BstMap<(a custom class we wrote),int>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_69_did_not_match
-Line_72_did_not_match
-Line_73_did_not_match
-Line_76_did_not_match
-Line_77_did_not_match
-Line_84_did_not_match
-Line_85_did_not_match
-Line_88_did_not_match
-Line_89_did_not_match
-Line_92_did_not_match
-Line_97_did_not_match
-Line_100_did_not_match
-Line_101_did_not_match
-Line_104_did_not_match
-Line_105_did_not_match
-Line_112_did_not_match
-Line_113_did_not_match
-Line_116_did_not_match
-Line_120_did_not_match
-Line_125_did_not_match
-Line_128_did_not_match
-Line_129_did_not_match
-Line_132_did_not_match
-Line_133_did_not_match
-Line_152_did_not_match
-Line_153_did_not_match
-Your file did not match the expected ouput
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 8 : Testing with BstMap<(a custom class we wrote),std::string>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_69_did_not_match
-Line_72_did_not_match
-Line_73_did_not_match
-Line_76_did_not_match
-Line_77_did_not_match
-Line_84_did_not_match
-Line_85_did_not_match
-Line_88_did_not_match
-Line_89_did_not_match
-Line_92_did_not_match
-Line_97_did_not_match
-Line_100_did_not_match
-Line_101_did_not_match
-Line_104_did_not_match
-Line_105_did_not_match
-Line_112_did_not_match
-Line_113_did_not_match
-Line_116_did_not_match
-Line_120_did_not_match
-Line_125_did_not_match
-Line_128_did_not_match
-Line_129_did_not_match
-Line_132_did_not_match
-Line_133_did_not_match
-Line_152_did_not_match
-Line_153_did_not_match
-Your file did not match the expected ouput
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 9 : Testing with BstMap<(a custom class we wrote),(a custom class we wrote)>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_69_did_not_match
-Line_72_did_not_match
-Line_73_did_not_match
-Line_76_did_not_match
-Line_77_did_not_match
-Line_84_did_not_match
-Line_85_did_not_match
-Line_88_did_not_match
-Line_89_did_not_match
-Line_92_did_not_match
-Line_97_did_not_match
-Line_100_did_not_match
-Line_101_did_not_match
-Line_104_did_not_match
-Line_105_did_not_match
-Line_112_did_not_match
-Line_113_did_not_match
-Line_116_did_not_match
-Line_120_did_not_match
-Line_125_did_not_match
-Line_128_did_not_match
-Line_129_did_not_match
-Line_132_did_not_match
-Line_133_did_not_match
-Line_152_did_not_match
-Line_153_did_not_match
-Your file did not match the expected ouput
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 
-Overall Grade: F
+Overall Grade: A
