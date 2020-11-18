@@ -72,8 +72,10 @@ public:
      virtual void remove(const K &key){
         Node **cur = &root;
         while(*cur != NULL){
+             
             if((*cur)->key == key){
                 //delete
+              
                 if((*cur)->left == NULL){
                     Node *temp = (*cur)->right;
                     delete *cur;
@@ -85,18 +87,24 @@ public:
                 }else{
                     Node **temp = &((*cur)->right);
                     while ((*temp)->left != NULL){
-                        temp =&((*cur)->left);
+                        temp =&((*temp)->left);
+                       
                     }
                     (*cur)->key = (*temp)->key;
                     (*cur)->value = (*temp)->value;
+                   
                     Node *rightChild = (*temp)->right;
                     delete (*temp);
                     *temp = rightChild;
                 }
+                
+                return;
             }else if((*cur)->key > key){
-                cur = &((*cur)->right);
+                cur = &((*cur)->left);
+               
             }else{
-                 cur = &((*cur)->left);
+                 cur = &((*cur)->right);
+                 
             }
         }
 
