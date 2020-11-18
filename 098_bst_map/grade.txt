@@ -1,6 +1,6 @@
-Grading at 11/18/2020:04:18:47.623406
-For commit ID 748b958474d55f2c3f3552bdbffe99768e42a885
-Grading at Wed Nov 18 12:18:26 CST 2020
+Grading at 11/18/2020:04:24:09.330378
+For commit ID 945a0b85e7fe11e5eda17b35932cc09f258d5942
+Grading at Wed Nov 18 12:23:47 CST 2020
 -----------------------------------------------
 testcase 1 : Testing with BstMap<int,int>
 ...compiling...
@@ -24,7 +24,6 @@ Line_105_did_not_match
 Line_112_did_not_match
 Line_113_did_not_match
 Line_116_did_not_match
-Line_119_did_not_match
 Line_120_did_not_match
 Line_125_did_not_match
 Line_128_did_not_match
@@ -58,7 +57,6 @@ Line_105_did_not_match
 Line_112_did_not_match
 Line_113_did_not_match
 Line_116_did_not_match
-Line_119_did_not_match
 Line_120_did_not_match
 Line_125_did_not_match
 Line_128_did_not_match
@@ -92,7 +90,6 @@ Line_105_did_not_match
 Line_112_did_not_match
 Line_113_did_not_match
 Line_116_did_not_match
-Line_119_did_not_match
 Line_120_did_not_match
 Line_125_did_not_match
 Line_128_did_not_match
@@ -109,36 +106,36 @@ testcase 4 : Testing with BstMap<std::string,int>
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==130390== Memcheck, a memory error detector
-==130390== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==130390== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==130390== Command: ./test.4
-==130390== Parent PID: 130389
-==130390== 
+==5474== Memcheck, a memory error detector
+==5474== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==5474== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==5474== Command: ./test.4
+==5474== Parent PID: 5473
+==5474== 
 -----------------------------------------------
 testcase 5 : Testing with BstMap<std::string,std::string>
 ...compiling...
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==130499== Memcheck, a memory error detector
-==130499== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==130499== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==130499== Command: ./test.5
-==130499== Parent PID: 130498
-==130499== 
+==5575== Memcheck, a memory error detector
+==5575== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==5575== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==5575== Command: ./test.5
+==5575== Parent PID: 5574
+==5575== 
 -----------------------------------------------
 testcase 6 : Testing with BstMap<std::string,(a custom class we wrote)>
 ...compiling...
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==130604== Memcheck, a memory error detector
-==130604== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==130604== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==130604== Command: ./test.6
-==130604== Parent PID: 130603
-==130604== 
+==5680== Memcheck, a memory error detector
+==5680== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==5680== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==5680== Command: ./test.6
+==5680== Parent PID: 5679
+==5680== 
 -----------------------------------------------
 testcase 7 : Testing with BstMap<(a custom class we wrote),int>
 ...compiling...
@@ -162,7 +159,6 @@ Line_105_did_not_match
 Line_112_did_not_match
 Line_113_did_not_match
 Line_116_did_not_match
-Line_119_did_not_match
 Line_120_did_not_match
 Line_125_did_not_match
 Line_128_did_not_match
@@ -196,7 +192,6 @@ Line_105_did_not_match
 Line_112_did_not_match
 Line_113_did_not_match
 Line_116_did_not_match
-Line_119_did_not_match
 Line_120_did_not_match
 Line_125_did_not_match
 Line_128_did_not_match
@@ -230,7 +225,6 @@ Line_105_did_not_match
 Line_112_did_not_match
 Line_113_did_not_match
 Line_116_did_not_match
-Line_119_did_not_match
 Line_120_did_not_match
 Line_125_did_not_match
 Line_128_did_not_match
