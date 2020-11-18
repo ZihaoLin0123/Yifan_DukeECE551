@@ -69,48 +69,68 @@ public:
         }
         throw std::invalid_argument("error");
     }
-    virtual void remove(const K & key) {
-    Node ** current = &root;
-    Node * temp = NULL;
-    //find key
-    while (*current != NULL) {
-      //current Node needs to be removed
-      if ((*current)->key == key) {
-        //one node or zero node
-        if ((*current)->left == NULL) {
-          temp = (*current)->right;
-          delete *current;
-          *current = temp;
+     virtual void remove(const K& key){
+        if(key == root->key){
+            root = remove(root);
+            return;
         }
-        else if ((*current)->right == NULL) {
-          temp = (*current)->left;
-          delete *current;
-          *current = temp;
+        Node *cur = root;
+        while(cur != NULL){
+            if(key < cur->key){
+                if(cur->left == NULL){
+                    return;
+                }else if(key == cur->left->key){
+                    cur->left = remove(cur->left);
+                    return;
+                }else{
+                    cur = cur->left;
+                }
+            }else if(key > cur->key){
+                if(cur->right == NULL){
+                    return;
+                }else if(key == cur->right->key){
+                    cur->right = remove(cur->right);
+                    //cout << "find" >> endl;
+                    return;
+                }else{
+                    cur = cur->right;
+                }
+            }
         }
-        else {
-          //go left once
-          Node ** toReplace = current;
-          current = &((*current)->left);
-          //follow right
-          while ((*current)->right != NULL) {
-            current = &((*current)->right);
-          }
-          (*toReplace)->key = (*current)->key;
-          const V value = (*current)->value;
-          temp = (*current)->left;
-          delete *current;
-          *current = temp;
-          add((*toReplace)->key, value);
-        }
-      }
-      else if (key < (*current)->key) {
-        current = &(*current)->left;
-      }
-      else {
-        current = &(*current)->right;
-      }
     }
-  }
+
+    Node * remove(Node * target){
+        //cout << "remove node" << target->data.first << endl;
+        if(target->left == NULL){
+            Node * temp = target->right;
+            delete target;
+            return temp;
+        }else if(target->right == NULL){
+            Node * temp = target->left;
+            delete target;
+            return temp;
+        }else{
+            Node *temp = target->right;
+            if(temp->left == NULL){
+                target->key = temp->key;
+                target->value = temp->value;
+                target->right = temp->right;
+                delete temp;
+                return target;
+            }else{
+                while(temp->left->left != NULL){
+                    temp = temp->left;
+                    
+                }
+                target->key = temp->left->key;
+                target->value = temp->left->value;
+                Node * node = temp->left;
+                temp->left = temp->left->right;
+                delete node;
+                return target;
+            }
+        }
+    }
 
    
 
