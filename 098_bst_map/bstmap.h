@@ -8,87 +8,53 @@ class BstMap:public Map<K, V> {
 private:
     class Node{
     public:
-        pair<K, V> data;
+        K key;
+        V value;
         Node *left;
         Node *right;
-        Node(pair<K, V> & d):data(d), left(NULL), right(NULL){}
+        Node(const K & k, const V & v):key(k), value(v), left(NULL), right(NULL){}
     };
-    Node *head;
+    Node *root;
 
 public:
-    BstMap():head(NULL){}
-     BstMap(const BstMap & rhs) : head(NULL) { head = copy(rhs.head); }
-    Node * copy(Node * node){
-        if(node == NULL){
-            return NULL;
-        }
-        Node *root = new Node(node->data);
-        root ->left = copy(node->left);
-        root->right = copy(node->right);
-        return root;
+    BstMap():root(NULL){}
+ BstMap(const BstMap & rhs) : root(NULL) { root = copy(rhs.root); }
+   
+ Node * copy(Node * current) {
+    if (current == NULL) {
+      return NULL;
     }
-    void destroy(Node * node){
-        if(node != NULL){
-            destroy(node->left);
-            destroy(node->right);
-            delete node;
-        }
-    }
-    
-    BstMap & operator=(const BstMap & rhs) {
-    if (this != &rhs) {
-      destroy(head);
-      head = copy(rhs.head);
-    }
-    return *this;
+    Node * root = new Node(current->key, current->value);
+    root->left = copy(current->left);
+    root->right = copy(current->right);
+    return root;
   }
-/*
+
+  
+
     virtual void add(const K & key, const V & value){
-        pair<K, V> temp(key, value);
-        head = add(head, temp);
+        root = add(root, key, value);
     }
-    Node * add(Node * cur, pair<K, V> & data){
+    Node * add(Node * cur, const K & key, const V & value){
         if (cur == NULL){
-            return new Node(data);
+            Node *ans = new Node(key, value);
+            return ans;
         }
-        if(data.first < cur->data.first){
-            cur->left = add(cur->left, data);
-        }else if (data.first > cur->data.first){
-            cur->right = add(cur->right, data);
+        if(key < cur->key){
+            cur->left = add(cur->left, key, value);
+        }else if (key > cur->key){
+            cur->right = add(cur->right, key, value);
         }else{
-            cur->data.second = data.second;
+            cur->value = value;
         }
         return cur;
     }
-    
-    */
-    
-    
-    virtual void add(const K & key, const V & value) {
-    Node ** current = &head;
-    pair<K, V> temp(key, value);
-    while (*current != NULL) {
-      //key exists: replace its value
-      if (key == (*current)->data.first) {
-        (*current)->data.second = value;
-        return;
-      }
-      //no such key
-      else if (key < (*current)->data.first) {
-        current = &((*current)->left);
-      }
-      else {
-        current = &((*current)->right);
-      }
-    }
-    *current = new Node(temp);
-  }
     virtual const V & lookup(const K& key) const throw (std::invalid_argument){
-        Node *cur = head;
+        Node *cur = root;
         while(cur != NULL){
-            if(key == cur->data.first){
-                return cur->data.second;
-            }else if(key < cur->data.first){
+            if(key == cur->key){
+                return cur->value;
+            }else if(key < cur->key){
                 cur = cur->left;
             }else{
                 cur = cur->right;
@@ -97,28 +63,25 @@ public:
         throw std::invalid_argument("error");
     }
     virtual void remove(const K& key){
-        if(head == NULL){
-        return;
-        }
-        if(key == head->data.first){
-            head = remove(head);
+        if(key == root->key){
+            root = remove(root);
             return;
         }
-        Node *cur = head;
+        Node *cur = root;
         while(cur != NULL){
-            if(key < cur->data.first){
+            if(key < cur->key){
                 if(cur->left == NULL){
                     return;
-                }else if(key == cur->left->data.first){
+                }else if(key == cur->left->key){
                     cur->left = remove(cur->left);
                     return;
                 }else{
                     cur = cur->left;
                 }
-            }else if(key > cur->data.first){
+            }else if(key > cur->key){
                 if(cur->right == NULL){
                     return;
-                }else if(key == cur->right->data.first){
+                }else if(key == cur->right->key){
                     cur->right = remove(cur->right);
                     //cout << "find" >> endl;
                     return;
@@ -142,7 +105,8 @@ public:
         }else{
             Node *temp = target->right;
             if(temp->left == NULL){
-                target->data = temp->data;
+                target->key = temp->key;
+                target->value = temp->value;
                 delete temp;
                 target->right = NULL;
                 return target;
@@ -151,8 +115,9 @@ public:
                     temp = temp->left;
                     
                 }
-                target->data = temp->left->data;
-              
+                target->key = temp->left->key;
+                target->value = temp->left->value;
+
                 delete temp->left;
                 temp->left = NULL;
                 return target;
@@ -162,19 +127,25 @@ public:
 
    
 
-    
+    void destory(Node * node){
+        if(node != NULL){
+            destory(node->left);
+            destory(node->right);
+            delete node;
+        }
+    }
     virtual ~BstMap<K,V>() {
-        destroy(head);
+        destory(root);
     }
 
-    void pre(){
-        preOrderTraverse(head);
+    void in(){
+        inOrderTraverse(root);
     }
-    void preOrderTraverse(Node * node){
+    void inOrderTraverse(Node * node){
         if(node != NULL){
-            cout << node->data.first << endl;
-            preOrderTraverse(node->left);
-            preOrderTraverse(node->right);
+            inOrderTraverse(node->left);
+            cout << node->key << endl;
+            inOrderTraverse(node->right);
         }
     }
 };

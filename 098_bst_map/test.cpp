@@ -16,18 +16,18 @@ int main(void) {
   map.add(35, 10);
   map.add(70, 11);
   map.add(86, 12);
-  map.pre();
+  map.in();
   std::cout << "\n";
   int ans1 = map.lookup(60);
   int ans2 = map.lookup(35);
   map.remove(19);
-  map.pre();
+  map.in();
   std::cout << "\n";
   std::cout << "ans1 should be 1 and =" << ans1 << "\n";
   std::cout << "ans2 should be 10 and =" << ans2 << "\n";
 
   BstMap<int, int> map2 = map;
-  map2.pre();
+  map2.in();
   std::cout << "\n";
   return 0;
 }
