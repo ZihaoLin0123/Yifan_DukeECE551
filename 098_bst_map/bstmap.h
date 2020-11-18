@@ -69,68 +69,38 @@ public:
         }
         throw std::invalid_argument("error");
     }
-     virtual void remove(const K& key){
-        if(key == root->key){
-            root = remove(root);
-            return;
-        }
-        Node *cur = root;
-        while(cur != NULL){
-            if(key < cur->key){
-                if(cur->left == NULL){
-                    return;
-                }else if(key == cur->left->key){
-                    cur->left = remove(cur->left);
-                    return;
+     virtual void remove(const K &key){
+        Node **cur = &root;
+        while(*cur != NULL){
+            if((*cur)->key == key){
+                //delete
+                if((*cur)->left == NULL){
+                    Node *temp = (*cur)->right;
+                    delete *cur;
+                    *cur = temp;
+                }else if((*cur)->right == NULL){
+                    Node *temp = (*cur)->left;
+                    delete *cur;
+                    *cur = temp;
                 }else{
-                    cur = cur->left;
+                    Node **temp = &((*cur)->right);
+                    while ((*temp)->left != NULL){
+                        temp =&((*cur)->left);
+                    }
+                    (*cur)->key = (*temp)->key;
+                    (*cur)->key = (*temp)->key;
+                    Node *rightChild = (*temp)->right;
+                    delete (*temp);
+                    *temp = rightChild;
                 }
-            }else if(key > cur->key){
-                if(cur->right == NULL){
-                    return;
-                }else if(key == cur->right->key){
-                    cur->right = remove(cur->right);
-                    //cout << "find" >> endl;
-                    return;
-                }else{
-                    cur = cur->right;
-                }
-            }
-        }
-    }
-
-    Node * remove(Node * target){
-        //cout << "remove node" << target->data.first << endl;
-        if(target->left == NULL){
-            Node * temp = target->right;
-            delete target;
-            return temp;
-        }else if(target->right == NULL){
-            Node * temp = target->left;
-            delete target;
-            return temp;
-        }else{
-            Node *temp = target->right;
-            if(temp->left == NULL){
-                target->key = temp->key;
-                target->value = temp->value;
-                target->right = temp->right;
-                delete temp;
-                return target;
+            }else if((*cur)->key > key){
+                cur = &((*cur)->right);
             }else{
-                while(temp->left->left != NULL){
-                    temp = temp->left;
-                    
-                }
-                target->key = temp->left->key;
-                target->value = temp->left->value;
-                Node * node = temp->left;
-                temp->left = temp->left->right;
-                delete node;
-                return target;
+                 cur = &((*cur)->left);
             }
         }
-    }
+
+     }
 
    
 
