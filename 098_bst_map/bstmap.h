@@ -88,7 +88,7 @@ public:
                         temp =&((*cur)->left);
                     }
                     (*cur)->key = (*temp)->key;
-                    (*cur)->key = (*temp)->key;
+                    (*cur)->value = (*temp)->value;
                     Node *rightChild = (*temp)->right;
                     delete (*temp);
                     *temp = rightChild;
