@@ -29,26 +29,34 @@ public:
     root->right = copy(current->right);
     return root;
   }
+   BstMap & operator=(const BstMap & rhs) {
+    if (this != &rhs) {
+      destroy(root);
+      root = copy(rhs.root);
+    }
+    return *this;
+  }
 
   
 
-    virtual void add(const K & key, const V & value){
-        root = add(root, key, value);
+     virtual void add(const K & key, const V & value) {
+    Node ** current = &root;
+    while (*current != NULL) {
+      //key exists: replace its value
+      if (key == (*current)->key) {
+        (*current)->value = value;
+        return;
+      }
+      //no such key
+      else if (key < (*current)->key) {
+        current = &((*current)->left);
+      }
+      else {
+        current = &((*current)->right);
+      }
     }
-    Node * add(Node * cur, const K & key, const V & value){
-        if (cur == NULL){
-            Node *ans = new Node(key, value);
-            return ans;
-        }
-        if(key < cur->key){
-            cur->left = add(cur->left, key, value);
-        }else if (key > cur->key){
-            cur->right = add(cur->right, key, value);
-        }else{
-            cur->value = value;
-        }
-        return cur;
-    }
+    *current = new Node(key, value);
+  }
     virtual const V & lookup(const K& key) const throw (std::invalid_argument){
         Node *cur = root;
         while(cur != NULL){
@@ -127,15 +135,15 @@ public:
 
    
 
-    void destory(Node * node){
+    void destroy(Node * node){
         if(node != NULL){
-            destory(node->left);
-            destory(node->right);
+            destroy(node->left);
+            destroy(node->right);
             delete node;
         }
     }
     virtual ~BstMap<K,V>() {
-        destory(root);
+        destroy(root);
     }
 
     void in(){
