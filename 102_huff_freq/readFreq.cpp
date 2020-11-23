@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <cstdlib>
 #include "readFreq.h"
-
+#include <fstream>
+using namespace std;
 void printSym(std::ostream & s, unsigned sym) {
   if (sym > 256 ) {
     s << "INV";
@@ -21,4 +22,21 @@ void printSym(std::ostream & s, unsigned sym) {
 }
 uint64_t * readFrequencies(const char * fname) {
   //WRITE ME!
+  ifstream f(fname);
+  
+  if(f.fail()){
+    cerr << "can not open file" << endl;
+    exit(EXIT_FAILURE);
+  }
+  uint64_t * ans = new uint64_t[257];
+  cout << ans[0] << endl;
+  char c;
+  while(f.get(c)){
+    ++ans[(unsigned)c];
+    ++fname;
+  }
+  ans[256] = 1;
+  f.close();
+  return ans;
+  
 }
