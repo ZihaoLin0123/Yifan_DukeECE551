@@ -8,8 +8,11 @@
 #include <stdlib.h>
 #include "readFreq.h"
 #include "node.h"
+#include <fstream>
+#include <map>
+#include <iostream>
 
-
+using namespace std;
 
 void writeHeader(BitFileWriter * bfw, const std::map<unsigned,BitString> &theMap) {
   for (int i =0 ; i < 257; i++) {
@@ -29,7 +32,29 @@ void writeCompressedOutput(const char* inFile,
 			   const std::map<unsigned,BitString> &theMap ){
   BitFileWriter bfw(outFile);
   writeHeader(&bfw,theMap);
-
+  
+  ifstream f(inFile);
+  if(f.fail()){
+    cerr << "can not open file" << endl;
+    exit(EXIT_FAILURE);
+  }
+  char c;
+  map<unsigned, BitString>::const_iterator it;
+  while(f.get(c)){
+    it = theMap.find((unsigned char)c);
+    if(it != theMap.end()){
+      bfw.writeBitString(it->second);
+    }else{
+      cerr << "unseen character" << endl;
+      exit(EXIT_FAILURE);
+    }
+  }
+  
+  f.close();
+  it = theMap.find(256);
+  assert(it != theMap.end());
+  bfw.writeBitString(it->second);
+ 
   //WRITE YOUR CODE HERE!
   //open the input file for reading
 
@@ -51,7 +76,15 @@ int main(int argc, char ** argv) {
   //Implement main
   //hint 1: most of the work is already done. 
   //hint 2: you can look at the main from the previous tester for 90% of this
-
-
+  uint64_t * counts = readFrequencies(argv[1]);
+  assert(counts != NULL);
+  Node * tree = buildTree (counts);
+  delete[] counts;
+  std::map<unsigned,BitString> theMap;
+  BitString empty;
+  tree->buildMap(empty, theMap);
+   writeCompressedOutput(argv[1], argv[2], theMap);
+  //printTable(theMap);
+  delete tree;
   return EXIT_SUCCESS;
 }
