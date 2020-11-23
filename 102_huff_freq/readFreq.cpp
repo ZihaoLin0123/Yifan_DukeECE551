@@ -29,7 +29,6 @@ uint64_t * readFrequencies(const char * fname) {
     exit(EXIT_FAILURE);
   }
   uint64_t * ans = new uint64_t[257]();
-  cout << ans[0] << endl;
   char c;
   while(f.get(c)){
     ++ans[(unsigned)c];
