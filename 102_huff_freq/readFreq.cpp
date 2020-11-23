@@ -31,7 +31,7 @@ uint64_t * readFrequencies(const char * fname) {
   uint64_t * ans = new uint64_t[257]();
   char c;
   while(f.get(c)){
-    ++ans[(unsigned)c];
+    ++ans[(unsigned char)c];
     ++fname;
   }
   ans[256] = 1;
