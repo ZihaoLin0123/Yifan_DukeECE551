@@ -8,6 +8,6 @@ B
 D
 D
 E
-C
-C
 B
+C
+D
