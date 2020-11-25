@@ -338,13 +338,16 @@ public:
 
     void printWinPath(set<int> reachableSet){
         set<int>::iterator it = reachableSet.begin();
-       
+        vector<string> ans;
         while(it != reachableSet.end()){
            Page& p = findPage(*it);
             if(p.isWIN()){
-                cout << "Page " << *it << " WIN" << endl;
+                stringstream sstr;
+                sstr << "Page " << *it << " WIN";
+                ans.push_back(sstr.str());
                 Page *cur = &p;
                 while(cur->getPre() != NULL){
+                    stringstream temp;
                     int choice = 1;
                     vector<int>::iterator it = cur->getPre()->getReferencedPages().begin();
                     while(it != cur->getPre()->getReferencedPages().end()){
@@ -354,13 +357,21 @@ public:
                         ++choice;
                         ++it;
                     }
-                    cout << "Page " << cur->getPre()->getIndex() << " Choice " << choice << endl;
+                    temp << "Page " << cur->getPre()->getIndex() << " Choice " << choice;
+                    ans.push_back(temp.str());
                     cur = cur->getPre();
                 }
                 break;
             }
             ++it;
         }
+        
+        int size = (int)ans.size();
+        for (int i = (size - 1); i >= 0; --i)
+        {
+	          cout << ans.at(i) << endl;
+        }
+
     }
 
     void findWinPath(set<int> reachableSet){
