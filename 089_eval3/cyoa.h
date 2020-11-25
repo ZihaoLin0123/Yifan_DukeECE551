@@ -324,12 +324,13 @@ public:
                 ++it;
             }
         }
-        
+        /*
         for (int i = 1; i <= totalPage; i++){
             if(visited.count(i) == 0){
                 cout << "Page " << i << " is not reachable" << endl;
             }
         }
+        */
         
 
         return visited;
@@ -408,6 +409,10 @@ public:
             it->second.setPre(NULL);
             ++it;
         }
+    }
+    
+    int getTotalPage(){
+      return totalPage;
     }
 
 };

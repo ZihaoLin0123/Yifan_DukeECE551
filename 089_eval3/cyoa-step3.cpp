@@ -18,7 +18,13 @@ int main(int argc, char ** argv){
     story.checkValidReference();
     story.checkIsReferenced();
     story.checkWinLosePages();
-    story.getReachableSet();
+    set<int> visited = story.getReachableSet();
+    for (int i = 1; i <= story.getTotalPage(); i++){
+        if(visited.count(i) == 0){
+            cout << "Page " << i << " is not reachable" << endl;
+        }
+    }
+        
     exit(EXIT_SUCCESS);
    
 }
