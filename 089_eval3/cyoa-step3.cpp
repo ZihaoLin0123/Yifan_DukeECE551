@@ -6,17 +6,19 @@
 #include <fstream>
 #include <sstream>
 #include <set>
-#include <stack>
 #include "cyoa.h"
 using namespace std;
-
 int main(int argc, char ** argv){
     Story story;
+    if(argc < 2){
+        cerr << "Please enter a dir" << endl;
+        exit(EXIT_FAILURE);
+    }
     story.loadStory(argv[1]);
     story.checkValidReference();
     story.checkIsReferenced();
     story.checkWinLosePages();
-    set<int> s = story.getReachableSet();
-    story.findWinPath(s);
+    story.getReachableSet();
     exit(EXIT_SUCCESS);
+   
 }
