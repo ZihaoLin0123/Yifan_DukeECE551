@@ -13,6 +13,10 @@ using namespace std;
 int main(int argc, char ** argv){
     Story story;
     //load story
+    if(argc < 2){
+        cerr << "Please enter a dir" << endl;
+        exit(EXIT_FAILURE);
+    }
     story.loadStory(argv[1]);
     //some check
     story.checkValidReference();
