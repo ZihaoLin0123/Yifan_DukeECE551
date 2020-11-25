@@ -20,14 +20,17 @@ int main(int argc, char ** argv){
         cerr << "fail to open file" << endl;
         exit(EXIT_FAILURE);
     }
+    //read the content from the input file
     while(getline(file, str)){
         vec.push_back(str);
     }
     file.close();
+    //blank page is not allowed
     if(vec.size() == 0){
         cerr << "blank page is not allowed" << endl;
         exit(EXIT_FAILURE);
     }
+    //constrcut the page and print it
     page.setPageContent(vec);
     page.constructPage();
     page.printPage();
